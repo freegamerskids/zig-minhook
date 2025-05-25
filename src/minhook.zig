@@ -41,7 +41,7 @@ pub fn uninitialize() !void {
 }
 
 /// Creates a hook for the specified target function, in disabled state.
-pub fn createHook(target: *const anyopaque, detour: *const anyopaque, original: ?*align(@alignOf(anyopaque)) ?*anyopaque) !void {
+pub fn createHook(target: *const anyopaque, detour: *const anyopaque, original: ?*align(@alignOf(usize)) ?*anyopaque) !void {
     if (getMinhookError(minhook.MH_CreateHook(@constCast(target), @constCast(detour), original))) |err| {
         return err;
     }
